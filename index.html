@@ -1,0 +1,190 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Salma</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <h2 class="logo">Portofolio<span>.</span></h2>
+
+            <button class="menu-toggle" id="menuToggle"
+                aria-label="Buka menu" aria-expanded="false">
+                ☰
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#projects">Proyek</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="hero-text reveal">
+            <p class="greeting">✨ Halo, selamat datang!</p>
+
+            <h1>Perkenalkan Nama Saya </h1>
+            <h2><span>SALMA</span></h1>
+
+
+            <h3>mahasiswa informatika</h3>
+
+            <p>
+                Saya sedang belajar membuat website
+                yang menarik, modern, dan responsif.
+                Selamat datang di portofolio pribadi saya!
+            </p>
+
+            <a href="#projects" class="btn">
+                Lihat Proyek →
+            </a>
+        </div>
+
+        <!-- Foto Profil -->
+        <div class="hero-image reveal">
+            <div class="photo-glow">
+                <img
+                    src="pas foto salma.jpeg"
+                    alt="Foto profil Salma"
+                    class="profile-photo"
+                >
+            </div>
+            <span class="sparkle sparkle-one">✦</span>
+            <span class="sparkle sparkle-two">✧</span>
+            <span class="floating-heart">♡</span>
+        </div>
+
+        <a href="#about" class="scroll-down">
+            Scroll Down ↓
+        </a>
+    </section>
+
+    <!-- Tentang Saya -->
+    <section id="about" class="section reveal">
+        <h2>Tentang Saya</h2>
+        <div class="about-card">
+            <p>
+                Halo! Saya seorang pemula yang tertarik dengan
+                dunia teknologi, desain web, HTML, dan CSS.
+                Saya sedang belajar untuk mengembangkan kemampuan
+                dan membuat proyek-proyek baru.
+            </p>
+        </div>
+    </section>
+
+    <!-- Keahlian -->
+    <section id="skills" class="section reveal">
+        <h2>Keahlian Saya</h2>
+
+        <div class="skills-container">
+            <div class="skill-card">
+                <div class="skill-icon">🌐</div>
+                <h3>HTML</h3>
+                <p>Membuat struktur halaman website.</p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">🎨</div>
+                <h3>CSS</h3>
+                <p>Mengatur warna, tampilan, dan desain.</p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">✨</div>
+                <h3>Desain Web</h3>
+                <p>Membuat tampilan yang menarik dan nyaman.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proyek -->
+    <section id="projects" class="section reveal">
+        <h2>Proyek Saya</h2>
+
+        <div class="project-container">
+            <div class="project-card">
+                <div class="project-icon">🌐</div>
+                <h3>Website Pertama</h3>
+                <p>Website sederhana yang dibuat menggunakan HTML.</p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-icon">🎨</div>
+                <h3>Landing Page</h3>
+                <p>Halaman web modern menggunakan HTML dan CSS.</p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-icon">💻</div>
+                <h3>Website Profil</h3>
+                <p>Website profil pribadi dengan desain responsif.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak -->
+    <section id="contact" class="section reveal">
+        <div class="contact-card">
+            <h2>Hubungi Saya 💌</h2>
+
+            <a href="salmaamunzir@gmail.com" class="btn">
+                Kirim Email
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 SALMA. Dibuat dengan HTML, CSS & JavaScript.</p>
+    </footer>
+
+    <!-- JavaScript untuk interaksi -->
+    <script>
+        // Menu navigasi untuk HP
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+
+        menuToggle.addEventListener("click", function () {
+            const isOpen = navLinks.classList.toggle("active");
+            menuToggle.setAttribute("aria-expanded", isOpen);
+            menuToggle.textContent = isOpen ? "✕" : "☰";
+        });
+
+        // Tutup menu setelah memilih bagian
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", () => {
+                navLinks.classList.remove("active");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.textContent = "☰";
+            });
+        });
+
+        // Animasi muncul saat halaman digulir
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15
+        });
+
+        document.querySelectorAll(".reveal").forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+
+</body>
+</html>
